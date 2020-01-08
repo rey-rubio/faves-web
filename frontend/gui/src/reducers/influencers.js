@@ -1,7 +1,8 @@
-import { GET_INFLUENCERS } from "../actions/types.js";
+import { GET_INFLUENCERS, GET_INFLUENCER } from "../actions/types.js";
 
 const initialState = {
-  influencers: []
+  influencers: [],
+  influencer: {}
 };
 
 export default function(state = initialState, action) {
@@ -9,7 +10,14 @@ export default function(state = initialState, action) {
     case GET_INFLUENCERS:
       return {
         ...state,
-        influencers: action.payload
+        influencers: action.payload,
+        influencer: {}
+      };
+    case GET_INFLUENCER:
+      return {
+        ...state,
+        influencers: [],
+        influencer: action.payload
       };
     default:
       return state;

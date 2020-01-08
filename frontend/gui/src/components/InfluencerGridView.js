@@ -8,6 +8,8 @@ import clsx from "clsx";
 import Card from "@material-ui/core/Card";
 import List from "@material-ui/core/List";
 import Grid from "@material-ui/core/Grid";
+import GridList from "@material-ui/core/GridList";
+import GridListTile from "@material-ui/core/GridListTile";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
@@ -23,8 +25,9 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { withStyles } from "@material-ui/core/styles";
 import Influencer from "./Influencer";
-
-export class Influencers extends Component {
+import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
+import Container from "@material-ui/core/Container";
+export class InfluencerGridView extends Component {
   static propTypes = {
     influencers: PropTypes.array.isRequired,
     getInfluencers: PropTypes.func.isRequired
@@ -32,38 +35,40 @@ export class Influencers extends Component {
 
   componentDidMount() {
     this.props.getInfluencers();
-    console.log("test");
+    console.log("test InfluencerGridView");
   }
 
   render() {
+    // const getGridListCols = () => {
+    //   if (isWidthUp("xl", this.props.width)) {
+    //     return 4;
+    //   }
+
+    //   if (isWidthUp("lg", this.props.width)) {
+    //     return 3;
+    //   }
+
+    //   if (isWidthUp("md", this.props.width)) {
+    //     return 2;
+    //   }
+
+    //   return 1;
+    // };
     return (
-      <Grid>
-        {/* {this.props.influencers.map(influencer => (
-          <Card>
-            <CardHeader
-              title={`${influencer.first_name} ${influencer.last_name} `}
-            />
-            <CardMedia
-              image="/static/images/cards/paella.jpg"
-              title="Paella dish"
-            />
-            <CardContent>
-              <Typography variant="body2" color="textSecondary" component="p">
-                {influencer.industry}
-              </Typography>
-            </CardContent>
-            <CardActions disableSpacing>
-              <IconButton aria-label="add to favorites">
-                <FavoriteIcon />
-              </IconButton>
-              <IconButton aria-label="share">
-                <ShareIcon />
-              </IconButton>
-            </CardActions>
-          </Card>
-        ))} */}
-        <Influencer testing={this.props.influencers} />
-      </Grid>
+      <Container maxWidth="lg" component="main">
+        <Grid
+          container
+          spacing={5}
+          alignItems="flex-end"
+          // cols={getGridListCols()}
+        >
+          {this.props.influencers.map(influencer => (
+            <Grid item key={influencer} xs={12} sm={6} md={4} lg={3}>
+              <Influencer influencer={influencer} />
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
     );
   }
 }
@@ -72,4 +77,6 @@ const mapStateToProps = state => ({
   influencers: state.influencers.influencers
 });
 
-export default connect(mapStateToProps, { getInfluencers })(Influencers);
+export default connect(mapStateToProps, { getInfluencers })(
+  withWidth()(InfluencerGridView)
+);

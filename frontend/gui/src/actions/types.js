@@ -1,3 +1,4 @@
 export const GET_INFLUENCERS = "GET_INFLUENCERS";
+export const GET_INFLUENCER = "GET_INFLUENCER";
 export const CREATE_MESSAGE = "CREATE_MESSAGE";
 export const GET_ERRORS = "GET_ERRORS";

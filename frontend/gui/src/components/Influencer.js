@@ -45,6 +45,21 @@ const useStyles = makeStyles(theme => ({
 const Influencer = props => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+  const {
+    id,
+    first_name,
+    last_name,
+    nickname,
+    industry,
+    level,
+    twitter,
+    youtube,
+    instagram
+  } = props.influencer;
+
+  const hasTwitter = twitter !== undefined && twitter.length !== 0;
+  const hasYoutube = youtube !== undefined && youtube.length !== 0;
+  const hasInstagram = instagram !== undefined && instagram.length !== 0;
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -52,34 +67,51 @@ const Influencer = props => {
 
   return (
     <div>
-      {props.testing.map(influencer => (
-        <Card className={classes.card}>
-          <CardHeader
-            title={`${influencer.first_name} ${influencer.last_name} `}
-          />
-          <CardMedia
-            className={classes.media}
-            image="/static/images/cards/paella.jpg"
-            title="Paella dish"
-          />
-          <CardContent>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {influencer.industry}
-            </Typography>
-          </CardContent>
-          <CardActions disableSpacing>
-            <IconButton aria-label="add to favorites">
-              <FavoriteIcon />
+      <Card className={classes.card}>
+        <CardHeader align="center" title={`${first_name} ${last_name}`} />
+        <CardMedia
+          className={classes.media}
+          image="/static/images/cards/paella.jpg"
+        />
+        <CardContent>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {industry}
+          </Typography>
+        </CardContent>
+        <CardActions disableSpacing>
+          <IconButton aria-label="add to favorites">
+            <FavoriteIcon color="primary" />
+          </IconButton>
+
+          {hasTwitter && (
+            <IconButton
+              aria-label="share"
+              href={`https://twitter.com/${twitter[0].handle}`}
+              target="_blank"
+            >
+              <TwitterIcon style={{ color: "#38A1F3" }} />
             </IconButton>
-            <IconButton aria-label="share">
-              <TwitterIcon />
+          )}
+          {hasYoutube && (
+            <IconButton
+              aria-label="share"
+              href={`https://youtube.com/${youtube[0].handle}`}
+              target="_blank"
+            >
+              <YouTubeIcon style={{ color: "#FF0000" }} />
             </IconButton>
-            <IconButton aria-label="share">
-              <YoutubeIcon />
+          )}
+          {hasInstagram && (
+            <IconButton
+              aria-label="share"
+              href={`https://instagram.com/${instagram[0].handle}`}
+              target="_blank"
+            >
+              <InstagramIcon style={{ color: "#fb3958" }} />
             </IconButton>
-          </CardActions>
-        </Card>
-      ))}
+          )}
+        </CardActions>
+      </Card>
     </div>
   );
 };
