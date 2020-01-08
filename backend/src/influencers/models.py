@@ -15,3 +15,33 @@ class Influencer(models.Model):
     def __str__(self):
         return "%s %s %s %s %s" % (
             self.first_name, self.last_name, self.nickname, self.level, self.industry)
+
+
+class Twitter(models.Model):
+    influencer = models.ForeignKey(
+        Influencer, related_name='twitter', on_delete=models.CASCADE)
+    handle = models.CharField(max_length=100)
+    twitter_id = models.IntegerField(unique=True, null=True)
+
+    def __str__(self):
+        return "%s %s %s %s" % (self.id, self.influencer, self.handle, self.twitter_id)
+
+
+class Youtube(models.Model):
+    influencer = models.ForeignKey(
+        Influencer, related_name='youtube', on_delete=models.CASCADE)
+    handle = models.CharField(max_length=100)
+    youtube_id = models.CharField(max_length=100, unique=True, null=True)
+
+    def __str__(self):
+        return "%s %s %s %s" % (self.id, self.influencer, self.handle, self.youtube_id)
+
+
+class Instagram(models.Model):
+    influencer = models.ForeignKey(
+        Influencer, related_name='instagram', on_delete=models.CASCADE)
+    handle = models.CharField(max_length=100)
+    instagram_id = models.IntegerField(unique=True, null=True)
+
+    def __str__(self):
+        return "%s %s %s %s" % (self.id, self.influencer, self.handle, self.instagram_id)

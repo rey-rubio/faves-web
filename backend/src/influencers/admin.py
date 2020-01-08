@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import Influencer
-
+from .models import Influencer, Twitter, Youtube, Instagram
 # Register your models here.
 admin.site.register(Influencer)
+admin.site.register(Twitter)
+admin.site.register(Youtube)
+admin.site.register(Instagram)
