@@ -6,7 +6,7 @@ import { createMessage, returnErrors } from "./messages";
 // GET INFLUENCERS
 export const getInfluencers = () => dispatch => {
   axios
-    .get("http://127.0.0.1:8000/faves/influencers")
+    .get("http://192.168.99.100:8000/faves/influencers")
     .then(res => {
       dispatch({
         type: GET_INFLUENCERS,
@@ -21,7 +21,7 @@ export const getInfluencers = () => dispatch => {
 // GET INFLUENCER
 export const getInfluencer = influencer_id => dispatch => {
   axios
-    .get(`http://127.0.0.1:8000/faves/influencers/${influencer_id}`)
+    .get(`http://192.168.99.100:8000/faves/influencers/${influencer_id}`)
     .then(res => {
       dispatch({
         type: GET_INFLUENCER,
