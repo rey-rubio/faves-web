@@ -1,6 +1,9 @@
-*/node_modules/
+# */node_modules/
 # */build/
-*/.git/
+# */.git/
 .gitignore
 Dockerfile
 .editorconfig
+.git
+node_modules
+build

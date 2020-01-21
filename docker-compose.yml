@@ -1,28 +1,31 @@
 version: "3.7"
 services:
   backend:
-    build: ./backend
+    build:
+      context: ./backend
     command: python manage.py runserver 0.0.0.0:8000
     ports:
       - 8000:8000
     # env_file:
     #   - ./backend/.env.dev
     # build: ./app
-    # volumes:
-    #   - ./backend:/app/backend/
+    volumes:
+      # - ./backend:/faves/backend/
+      - /faves/node_modules
     # ports:
     #   - "8000:8000"
     # stdin_open: true
     # tty: true
-    # env_file:
-    #   - ./.env.dev
+    env_file:
+      - ./backend/.env.dev
     # command: python /app/backend/manage.py runserver 0.0.0.0:8000
   frontend:
-    build: ./frontend
-    # volumes:
-    #   - ./frontend:/faves
-    #   # One-way volume to use node_modules from inside image
-    #   - /app/node_modules
+    build:
+      context: ./frontend
+    volumes:
+      #   - ./frontend:/faves
+      #   # One-way volume to use node_modules from inside image
+      - /faves/node_modules
     ports:
       - "3000:3000"
     environment:
