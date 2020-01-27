@@ -18,11 +18,12 @@ import YouTubeIcon from "@material-ui/icons/YouTube";
 // import ShareIcon from "@material-ui/icons/Share";
 // import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 // import MoreVertIcon from "@material-ui/icons/MoreVert";
+
 import { Link as RouterLink } from "react-router-dom";
 import Link from "@material-ui/core/Link";
 const useStyles = makeStyles(theme => ({
   card: {
-    maxWidth: 345
+    maxWidth: 350
   },
   media: {
     height: 0,
@@ -43,7 +44,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Influencer = props => {
+const InfluencerCard = props => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const {
@@ -119,4 +120,4 @@ const Influencer = props => {
   );
 };
 
-export default Influencer;
+export default InfluencerCard;

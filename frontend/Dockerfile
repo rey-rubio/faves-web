@@ -4,7 +4,9 @@ WORKDIR /faves/frontend
 
 # Install dependencies
 COPY package*.json ./
-RUN npm ci -qy
+# RUN npm ci -qy
+RUN npm ci
+# RUN npm install
 # COPY package.json /faves/package.json
 # COPY package-lock.json /faves/package-lock.json
 # RUN ls -al

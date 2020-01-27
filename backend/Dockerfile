@@ -42,6 +42,7 @@ ENV PYTHONUNBUFFERED 1
 RUN pip install --upgrade pip
 COPY ./requirements.txt /faves/backend/requirements.txt
 RUN pip install -r requirements.txt
+# RUN pip install -r requirements.txt --proxy https://proxy:8080 --trusted-host pypi.python.org
 
 # copy project
 COPY . /faves/backend/

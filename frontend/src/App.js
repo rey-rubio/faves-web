@@ -1,11 +1,10 @@
 import React from "react";
 // import ReactDOM from "react-dom";
-import Navbar from "./containers/Navbar";
+import SideNavbar from "./components/Navbar/SideNavbar";
 import InfluencerLayout from "./containers/InfluencerLayout";
-
+import Grid from "@material-ui/core/Grid";
 import { BrowserRouter as Router } from "react-router-dom";
-import BaseRouter from "./routes";
-
+import BaseRouter from "./routes/routes";
 import { Provider } from "react-redux";
 import store from "../src/store";
 
@@ -19,17 +18,25 @@ const theme = createMuiTheme({
     }
   }
 });
-
 function App() {
   return (
     <Provider store={store}>
       <MuiThemeProvider theme={theme}>
         <div className="App">
-          <Navbar />
           <Router>
-            <InfluencerLayout>
-              <BaseRouter />
-            </InfluencerLayout>
+            <Grid container spacing={1}>
+              <Grid item md={2}>
+                <SideNavbar />
+              </Grid>
+              <Grid item md={8}>
+                <InfluencerLayout>
+                  <BaseRouter />
+                </InfluencerLayout>
+              </Grid>
+              <Grid item md={2}>
+                Search
+              </Grid>
+            </Grid>
           </Router>
         </div>
       </MuiThemeProvider>

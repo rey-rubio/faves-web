@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getInfluencer } from "../actions/influencers";
+import { getTweets } from "../../actions/tweets";
 
 // import { makeStyles } from "@material-ui/core/styles";
 // import clsx from "clsx";
@@ -24,35 +24,48 @@ import { getInfluencer } from "../actions/influencers";
 // import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 // import MoreVertIcon from "@material-ui/icons/MoreVert";
 // import { withStyles } from "@material-ui/core/styles";
-import Influencer from "./Influencer";
+// import Influencer from "./Influencer";
 import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
 import Container from "@material-ui/core/Container";
-
-export class InfluencerDetailView extends Component {
-  static propTypes = {
-    influencer: PropTypes.object.isRequired,
-    getInfluencer: PropTypes.func.isRequired
-  };
+import {
+  TwitterTimelineEmbed,
+  TwitterShareButton,
+  TwitterFollowButton,
+  TwitterHashtagButton,
+  TwitterMentionButton,
+  TwitterTweetEmbed,
+  TwitterMomentShare,
+  TwitterDMButton,
+  TwitterVideoEmbed,
+  TwitterOnAirButton
+} from "react-twitter-embed";
+export class TweetsFeed extends Component {
+  // static propTypes = {
+  //   getTweets: PropTypes.func.isRequired
+  // };
 
   componentDidMount() {
-    const influencerId = this.props.match.params.influencerId;
-    console.log("test InfluencerDetailView " + influencerId);
-    this.props.getInfluencer(influencerId);
+    // const influencerId = this.props.match.params.influencerId;
+    console.log("test TweetsFeed ");
+    // this.props.getTweets();
   }
 
   render() {
     return (
       <Container maxWidth="lg" component="main">
-        <Influencer influencer={this.props.influencer} />
+        {/* <Influencer influencer={this.props.influencer} /> */}
+        <TwitterTimelineEmbed
+          sourceType="profile"
+          screenName={twitter[0].handle}
+          // options={{ height: 400 }}
+        />
       </Container>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  influencer: state.influencers.influencer
+  //   influencer: state.influencers.influencer
 });
 
-export default connect(mapStateToProps, { getInfluencer })(
-  withWidth()(InfluencerDetailView)
-);
+export default connect(mapStateToProps, { getTweets })(withWidth()(TweetsView));

@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getInfluencers } from "../actions/influencers";
+import { getInfluencers } from "../../actions/influencers";
 
 import { makeStyles } from "@material-ui/core/styles";
 // import clsx from "clsx";
@@ -24,7 +24,7 @@ import Grid from "@material-ui/core/Grid";
 // import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 // import MoreVertIcon from "@material-ui/icons/MoreVert";
 // import { withStyles } from "@material-ui/core/styles";
-import Influencer from "./Influencer";
+import InfluencerCard from "./InfluencerCard";
 import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
 import Container from "@material-ui/core/Container";
 export class InfluencerGridView extends Component {
@@ -39,32 +39,12 @@ export class InfluencerGridView extends Component {
   }
 
   render() {
-    // const getGridListCols = () => {
-    //   if (isWidthUp("xl", this.props.width)) {
-    //     return 4;
-    //   }
-
-    //   if (isWidthUp("lg", this.props.width)) {
-    //     return 3;
-    //   }
-
-    //   if (isWidthUp("md", this.props.width)) {
-    //     return 2;
-    //   }
-
-    //   return 1;
-    // };
     return (
       <Container maxWidth="lg" component="main">
-        <Grid
-          container
-          spacing={5}
-          alignItems="flex-end"
-          // cols={getGridListCols()}
-        >
+        <Grid container spacing={5} alignItems="flex-end">
           {this.props.influencers.map(influencer => (
             <Grid item key={influencer} xs={12} sm={6} md={4} lg={3}>
-              <Influencer influencer={influencer} />
+              <InfluencerCard influencer={influencer} />
             </Grid>
           ))}
         </Grid>
