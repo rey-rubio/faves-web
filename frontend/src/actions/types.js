@@ -1,4 +1,6 @@
 export const GET_INFLUENCERS = "GET_INFLUENCERS";
 export const GET_INFLUENCER = "GET_INFLUENCER";
+export const GET_TWEETS = "GET_TWEETS";
+export const GET_YOUTUBE_VIDEOS = "GET_YOUTUBE_VIDEOS";
 export const CREATE_MESSAGE = "CREATE_MESSAGE";
 export const GET_ERRORS = "GET_ERRORS";

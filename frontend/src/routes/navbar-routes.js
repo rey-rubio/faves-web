@@ -4,14 +4,14 @@ import { Home, PeopleAlt } from "@material-ui/icons";
 
 export const MainNavbarRoutes = [
   {
-    path: "/",
+    path: "/home",
     sidebarName: "Home",
     navbarName: "Home",
     icon: Home
     // component: HomePage
   },
   {
-    path: "/",
+    path: "/influencers",
     sidebarName: "Influencers",
     navbarName: "Influencers",
     icon: PeopleAlt
@@ -20,18 +20,18 @@ export const MainNavbarRoutes = [
 ];
 export const UserNavbarRoutes = [
   {
-    path: "/",
+    path: "/home",
     sidebarName: "Login",
     navbarName: "Login",
     icon: PeopleAlt
-    // component: ProfilePage
+    // component: HomePage
   },
   {
-    path: "/",
+    path: "/home",
     sidebarName: "Logout",
     navbarName: "Logout",
     icon: PeopleAlt
-    // component: ProfilePage
+    // component: HomePage
   }
 ];
 

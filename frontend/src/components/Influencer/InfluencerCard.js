@@ -70,7 +70,7 @@ const InfluencerCard = props => {
   return (
     <div>
       <Card className={classes.card}>
-        <Link underline="none" component={RouterLink} to={`/${id}`}>
+        <Link underline="none" component={RouterLink} to={`/influencers/${id}`}>
           <CardHeader align="center" title={`${first_name} ${last_name}`} />
           <CardMedia
             className={classes.media}

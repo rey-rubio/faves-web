@@ -25,6 +25,7 @@ import {
 } from "react-twitter-embed";
 import InstagramEmbed from "react-instagram-embed";
 import { YoutubeFeed } from "../SocialMedia/YoutubeFeed";
+import { Container } from "@material-ui/core";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -87,6 +88,12 @@ export default function InfluencerTabView(props) {
   const hasInstagram = instagram !== undefined && instagram.length !== 0;
   return (
     <div className={classes.root}>
+      <Container>
+        <Typography>
+          {first_name} {last_name}
+        </Typography>
+      </Container>
+
       <AppBar position="static" color="default">
         <Tabs
           value={value}
@@ -102,6 +109,7 @@ export default function InfluencerTabView(props) {
             label="Home"
             {...a11yProps(0)}
           />
+
           <Tab
             icon={<TwitterIcon style={{ color: "#38A1F3" }} />}
             label="Twitter"
@@ -122,21 +130,25 @@ export default function InfluencerTabView(props) {
       <TabPanel value={value} index={0}>
         Home
       </TabPanel>
-      <TabPanel value={value} index={1}>
-        {hasTwitter && (
+      {hasTwitter && (
+        <TabPanel value={value} index={1}>
           <TwitterTimelineEmbed
             sourceType="profile"
             screenName={twitter[0].handle}
             // options={{ height: 400 }}
           />
-        )}
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        {hasYoutube && <YoutubeFeed />}
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        Instagram
-      </TabPanel>
+        </TabPanel>
+      )}
+      {hasYoutube && (
+        <TabPanel value={value} index={2}>
+          <YoutubeFeed />
+        </TabPanel>
+      )}
+      {hasInstagram && (
+        <TabPanel value={value} index={3}>
+          Instagram
+        </TabPanel>
+      )}
     </div>
   );
 }

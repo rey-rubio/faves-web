@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import YouTube from "react-youtube";
+import { getInfluencer } from "../../actions/influencers";
 // TODO
 export class YoutubeFeed extends Component {
+  static propTypes = {
+    getVideos: PropTypes.func.isRequired
+  };
   render() {
     const opts = {
       height: "390",
