@@ -24,16 +24,16 @@ function App() {
       <MuiThemeProvider theme={theme}>
         <div className="App">
           <Router>
-            <Grid container spacing={1}>
-              <Grid item md={2}>
+            <Grid container spacing={2}>
+              <Grid item md={1.5}>
                 <SideNavbar />
               </Grid>
-              <Grid item md={8}>
+              <Grid item md={9}>
                 <InfluencerLayout>
                   <BaseRouter />
                 </InfluencerLayout>
               </Grid>
-              <Grid item md={2}>
+              <Grid item md={1.5}>
                 Search
               </Grid>
             </Grid>

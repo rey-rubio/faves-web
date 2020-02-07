@@ -28,7 +28,19 @@ import InfluencerCard from "./InfluencerCard";
 import InfluencerTabView from "./InfluencerTabView";
 import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
 import Container from "@material-ui/core/Container";
-
+import SocialMediaNavbar from "../Navbar/SocialMediaNavbar";
+import HomeFeed from "../SocialMedia/HomeFeed";
+import TwitterFeed from "../SocialMedia/TwitterFeed";
+import YoutubeFeed from "../SocialMedia/YoutubeFeed";
+import InstagramFeed from "../SocialMedia/InstagramFeed";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+  useParams
+} from "react-router-dom";
 export class InfluencerDetailView extends Component {
   static propTypes = {
     influencer: PropTypes.object.isRequired,
@@ -55,9 +67,26 @@ export class InfluencerDetailView extends Component {
     } = this.props.influencer;
     return (
       <Container maxWidth="lg" component="main">
-        {/* <InfluencerCard influencer={this.props.influencer} />
-        {id} {first_name} {last_name} */}
-        <InfluencerTabView influencer={this.props.influencer} />
+        {id} {first_name} {last_name}
+        <SocialMediaNavbar influencer={this.props.influencer} />
+        <Switch>
+          <Route exact path="/influencers/:influencerId" component={HomeFeed} />
+          <Route
+            exact
+            path="/influencers/:influencerId/twitter"
+            component={TwitterFeed}
+          />
+          <Route
+            exact
+            path="/influencers/:influencerId/youtube"
+            component={YoutubeFeed}
+          />
+          <Route
+            exact
+            path="/influencers/:influencerId/instagram"
+            component={InstagramFeed}
+          />
+        </Switch>
       </Container>
     );
   }

@@ -40,6 +40,8 @@ ENV PYTHONUNBUFFERED 1
 
 # install dependencies
 RUN pip install --upgrade pip
+# CMD python manage.py makemigrations
+# CMD python manage.py migrate
 COPY ./requirements.txt /faves/backend/requirements.txt
 RUN pip install -r requirements.txt
 # RUN pip install -r requirements.txt --proxy https://proxy:8080 --trusted-host pypi.python.org

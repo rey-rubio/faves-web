@@ -37,6 +37,15 @@ class Youtube(models.Model):
         return "%s %s %s %s" % (self.id, self.influencer, self.handle, self.youtube_id)
 
 
+class YoutubeVideo(models.Model):
+    youtube_id = models.ForeignKey(
+        Youtube, related_name='youtube', on_delete=models.CASCADE)
+    youtube_video_id = models.CharField(max_length=100)
+
+    def __str__(self):
+        return "%s %s" % (self.youtube_id, self.youtube_video_id)
+
+
 class Instagram(models.Model):
     influencer = models.ForeignKey(
         Influencer, related_name='instagram', on_delete=models.CASCADE)

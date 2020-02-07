@@ -6,21 +6,21 @@ class TwitterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Twitter
-        fields = ['handle', 'twitter_id']
+        fields = ['id', 'handle', 'twitter_id']
 
 
 class YoutubeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Youtube
-        fields = ['handle', 'youtube_id']
+        fields = ['id', 'handle', 'youtube_id']
 
 
 class InstagramSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Instagram
-        fields = ['handle', 'instagram_id']
+        fields = ['id', 'handle', 'instagram_id']
 
 
 class InfluencerSerializer(serializers.ModelSerializer):

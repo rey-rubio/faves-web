@@ -6,17 +6,17 @@ import datetime
 from django.shortcuts import render
 from faves.settings import TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET, TWITTER_CONSUMER_ACCESS_TOKEN, TWITTER_CONSUMER_TOKEN_SECRET
 
-import tweepy
+# import tweepy
 
-auth = tweepy.OAuthHandler(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET)
-auth.set_access_token(TWITTER_CONSUMER_ACCESS_TOKEN,
-                      TWITTER_CONSUMER_TOKEN_SECRET)
-twitter_api = tweepy.API(auth)
+# auth = tweepy.OAuthHandler(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET)
+# auth.set_access_token(TWITTER_CONSUMER_ACCESS_TOKEN,
+#                       TWITTER_CONSUMER_TOKEN_SECRET)
+# twitter_api = tweepy.API(auth)
 
-tweets_nba = {}
-tweets_nba = set(tweets_nba)
-users_nba = {"NBA", "wojespn", "ShamsCharania", "ZachLowe_NBA", "sam_amick", "TheSteinLine", "ChrisBHaynes",
-             "davidaldridgedc", "WindhorstESPN"}
+# tweets_nba = {}
+# tweets_nba = set(tweets_nba)
+# users_nba = {"NBA", "wojespn", "ShamsCharania", "ZachLowe_NBA", "sam_amick", "TheSteinLine", "ChrisBHaynes",
+#              "davidaldridgedc", "WindhorstESPN"}
 
 
 class TweetView(views.APIView):
@@ -25,6 +25,8 @@ class TweetView(views.APIView):
         yourdata = [{"likes": 10, "comments": 0}, {"likes": 4, "comments": 23}]
         results = TweetSerializer(yourdata, many=True).data
         return Response(results)
+
+
 # def get_tweets(request):
 #     # print(nba_tweets.__name__)
 #     print(request)

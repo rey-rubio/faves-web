@@ -1,13 +1,15 @@
 import {
   GET_INFLUENCERS,
   GET_INFLUENCER,
-  GET_TWEETS
+  GET_TWEETS,
+  GET_YOUTUBE_VIDEOS
 } from "../actions/types.js";
 
 const initialState = {
   influencers: [],
   influencer: {},
-  tweets: []
+  tweets: [],
+  youtube_videos: []
 };
 
 export default function(state = initialState, action) {
@@ -15,23 +17,22 @@ export default function(state = initialState, action) {
     case GET_INFLUENCERS:
       return {
         ...state,
-        influencers: action.payload,
-        influencer: {},
-        tweets: []
+        influencers: action.payload
       };
     case GET_INFLUENCER:
       return {
         ...state,
-        influencers: [],
-        influencer: action.payload,
-        tweets: []
+        influencer: action.payload
       };
     case GET_TWEETS:
       return {
         ...state,
-        influencers: [],
-        influencer: {},
         tweets: action.payload
+      };
+    case GET_YOUTUBE_VIDEOS:
+      return {
+        ...state,
+        youtube_videos: action.payload
       };
     default:
       return state;
